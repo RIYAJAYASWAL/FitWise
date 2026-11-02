@@ -1,0 +1,10 @@
+# FitWise monorepo gitignore
+node_modules/
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# ML models trained at build time
+models/*.joblib
+ml-service/models/*.joblib

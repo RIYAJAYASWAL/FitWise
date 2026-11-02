@@ -1,0 +1,38 @@
+{
+  "category": "blouse",
+  "model_type": "LightGBM",
+  "features": [
+    "bust_cm",
+    "waist_cm",
+    "shoulder_cm",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "feature_list": [
+    "bust_cm",
+    "waist_cm",
+    "shoulder_cm",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "class_order": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "classes": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "metrics": {
+    "accuracy": 0.878,
+    "macro_f1": 0.8513
+  }
+}

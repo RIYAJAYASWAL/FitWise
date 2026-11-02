@@ -1,0 +1,23 @@
+name: Chart Doctor Nightly Job
+
+on:
+  schedule:
+    # Nightly cron run at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-chart-doctor:
+    name: Run Chart Doctor
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Chart Doctor via POST
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          INTERNAL_KEY: ${{ secrets.INTERNAL_KEY }}
+        run: |
+          curl -X POST "$API_URL/internal/chart-doctor/run" \
+            -H "x-internal-key: $INTERNAL_KEY" \
+            --retry 5 \
+            --retry-delay 30 \
+            --max-time 120

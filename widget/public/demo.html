@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanClassic Heavyweight Crewneck Tee — FitWise Demo Store</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --color-bg: #f8fafc;
+      --color-surface: #ffffff;
+      --color-text-main: #0f172a;
+      --color-text-muted: #64748b;
+      --color-primary: #0f172a;
+      --color-primary-hover: #1e293b;
+      --color-accent: #4f46e5;
+      --color-border: #e2e8f0;
+      --color-border-subtle: #f1f5f9;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, #1e1b4b 0%, #312e81 100%);
+      color: #e0e7ff;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      padding: 8px 16px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Store Navigation */
+    .navbar {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--color-text-main);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: var(--color-primary);
+      color: #ffffff;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--color-text-main);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cart-btn {
+      position: relative;
+      background: none;
+      border: 1px solid var(--color-border);
+      padding: 8px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Main Product Page Layout */
+    .page-container {
+      max-width: 1200px;
+      margin: 32px auto 64px;
+      padding: 0 24px;
+    }
+
+    .breadcrumbs {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 880px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Product Gallery */
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .main-image-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .tee-illustration {
+      width: 82%;
+      height: 82%;
+      filter: drop-shadow(0 20px 25px rgba(15, 23, 42, 0.12));
+    }
+
+    .pill-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    /* Product Details */
+    .product-info-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand-subtitle {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .product-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--color-text-main);
+    }
+
+    .review-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .stars {
+      color: #f59e0b;
+      letter-spacing: 1px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .current-price {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--color-text-main);
+    }
+
+    .original-price {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      text-decoration: line-through;
+    }
+
+    /* Options Section */
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .option-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-main);
+    }
+
+    /* Color Swatches */
+    .color-swatches {
+      display: flex;
+      gap: 10px;
+    }
+
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      outline: 2px solid var(--color-border);
+      transition: all 0.15s;
+    }
+
+    .swatch.active {
+      outline-color: var(--color-primary);
+      transform: scale(1.05);
+    }
+
+    /* Size Selector */
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .size-btn {
+      padding: 12px 6px;
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+
+    .size-btn:hover {
+      border-color: var(--color-text-main);
+    }
+
+    .size-btn.selected {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    /* FitWise Embed Container */
+    .fitwise-embed-section {
+      margin-top: 4px;
+      margin-bottom: 8px;
+      padding: 12px 14px;
+      background: #f1f5f9;
+      border-radius: var(--radius-md);
+      border: 1px dashed #cbd5e1;
+    }
+
+    .fitwise-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Buy CTAs */
+    .actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      background: var(--color-primary);
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .add-to-cart-btn:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .buy-now-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      background: #4f46e5;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .buy-now-btn:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    .store-features {
+      margin-top: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+      z-index: 9999;
+      animation: fw-toast-in 0.3s ease-out;
+    }
+
+    @keyframes fw-toast-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="announcement-bar">
+    ✨ Free Express Shipping & Returns on Orders Over $50 • 100% Fit Guarantee
+  </div>
+
+  <!-- Store Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span>UrbanClassic</span>
+        <span class="brand-badge">Apparel</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active">Men</a></li>
+        <li><a href="#" class="nav-link">Women</a></li>
+        <li><a href="#" class="nav-link">New Arrivals</a></li>
+        <li><a href="#" class="nav-link">Fit Guide</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="cart-btn" id="cart-counter">
+          🛒 Cart (<span id="cart-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Detail Section -->
+  <main class="page-container">
+    <div class="breadcrumbs">
+      <a href="#">Home</a> / <a href="#">Men's Apparel</a> / <a href="#">Tops</a> / <span>Heavyweight Crewneck Tee</span>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product Image Gallery -->
+      <div class="gallery-container">
+        <div class="main-image-card">
+          <span class="pill-badge">Bestseller</span>
+          <!-- Stylized Modern Vector T-Shirt -->
+          <svg class="tee-illustration" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 70 L75 35 L105 50 C112 55 128 55 135 50 L165 35 L200 70 L175 95 L160 82 L160 205 L80 205 L80 82 L65 95 Z" fill="#1e293b" />
+            <path d="M105 50 C112 58 128 58 135 50" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+            <path d="M80 82 L160 82" stroke="#334155" stroke-width="2" stroke-dasharray="4 4" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Product Information & FitWise Sizing Widget -->
+      <div class="product-info-panel">
+        <div>
+          <span class="brand-subtitle">UrbanClassic Standard Issue</span>
+          <h1 class="product-title">Heavyweight Cotton Crewneck Tee</h1>
+        </div>
+
+        <div class="review-row">
+          <span class="stars">★★★★★</span>
+          <span style="font-weight: 700;">4.9</span>
+          <span style="color: var(--color-text-muted);">(248 customer reviews)</span>
+        </div>
+
+        <div class="price-row">
+          <span class="current-price">$38.00</span>
+          <span class="original-price">$48.00</span>
+        </div>
+
+        <!-- Color Selection -->
+        <div class="option-group">
+          <div class="option-header">
+            <span class="option-title">Color: <strong id="selected-color-label">Charcoal Black</strong></span>
+          </div>
+          <div class="color-swatches">
+            <div class="swatch active" style="background: #1e293b;" title="Charcoal Black"></div>
+            <div class="swatch" style="background: #ffffff;" title="Crisp White"></div>
+            <div class="swatch" style="background: #475569;" title="Slate Navy"></div>
+            <div class="swatch" style="background: #3f3f46;" title="Vintage Olive"></div>
+          </div>
+        </div>
+
+        <!-- Size Selection & FitWise Integration -->
+        <div class="option-group">
+          <div class="option-header">
+            <span class="option-title">Select Size: <strong id="selected-size-label">M</strong></span>
+          </div>
+
+          <!-- FitWise Sizing Widget Embedded Container -->
+          <div class="fitwise-embed-section">
+            <div class="fitwise-label">
+              <span>⚡ AI Size Intelligence</span>
+            </div>
+            <!-- Embedded FitWise Widget Container -->
+            <div
+              id="fitwise-widget"
+              data-product-id="SKU-TSHIRT-CLASSIC"
+              data-api-url="%VITE_API_URL%"
+              data-api-key="%VITE_PUBLISHABLE_KEY%"
+            ></div>
+          </div>
+
+          <!-- Standard Size Selector Radio Buttons -->
+          <div class="sizes-grid">
+            <button type="button" class="size-btn" data-size="XS">XS</button>
+            <button type="button" class="size-btn" data-size="S">S</button>
+            <button type="button" class="size-btn selected" data-size="M">M</button>
+            <button type="button" class="size-btn" data-size="L">L</button>
+            <button type="button" class="size-btn" data-size="XL">XL</button>
+            <button type="button" class="size-btn" data-size="XXL">XXL</button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-group">
+          <button type="button" class="add-to-cart-btn" id="btn-add-to-cart">
+            Add to Bag — $38.00
+          </button>
+          <button type="button" class="buy-now-btn" id="btn-buy-now">
+            Buy Now — Fast Checkout
+          </button>
+        </div>
+
+        <!-- Store Guarantees -->
+        <div class="store-features">
+          <div class="feature-item">
+            <span>🛡️</span>
+            <span>Fit Guarantee with Free Return Exchange</span>
+          </div>
+          <div class="feature-item">
+            <span>⚡</span>
+            <span>Ships in 24 Hours with Tracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Store Interaction Script (Connects Store Size Selector with FitWise Events) -->
+  <script>
+    (function() {
+      let currentSize = 'M';
+      let cartCount = 0;
+
+      const sizeButtons = document.querySelectorAll('.size-btn');
+      const sizeLabel = document.getElementById('selected-size-label');
+      const cartCounter = document.getElementById('cart-count');
+      const toast = document.getElementById('toast');
+      const addToCartBtn = document.getElementById('btn-add-to-cart');
+      const buyNowBtn = document.getElementById('btn-buy-now');
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3200);
+      }
+
+      function selectSize(size) {
+        currentSize = size;
+        sizeButtons.forEach(btn => {
+          if (btn.getAttribute('data-size') === size) {
+            btn.classList.add('selected');
+          } else {
+            btn.classList.remove('selected');
+          }
+        });
+        if (sizeLabel) sizeLabel.textContent = size;
+      }
+
+      sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectSize(btn.getAttribute('data-size'));
+        });
+      });
+
+      // Listen to FitWise's custom event dispatched when a shopper accepts an AI recommended size
+      window.addEventListener('fitwise:size-selected', (e) => {
+        const recommendedSize = e.detail?.size || e.detail?.regionSize;
+        if (recommendedSize) {
+          selectSize(recommendedSize);
+          showToast(`⚡ FitWise applied recommended Size ${recommendedSize}!`);
+        }
+      });
+
+      // Add to Cart handler - uses window.FitWise.track('add_to_cart')
+      addToCartBtn.addEventListener('click', async () => {
+        cartCount += 1;
+        if (cartCounter) cartCounter.textContent = cartCount;
+        showToast(`✓ Added Size ${currentSize} to your shopping bag!`);
+
+        if (window.FitWise && typeof window.FitWise.track === 'function') {
+          try {
+            await window.FitWise.track('add_to_cart', { sku: 'SKU-TSHIRT-CLASSIC' });
+            console.log('FitWise.track("add_to_cart") successfully logged');
+          } catch (err) {
+            console.warn('FitWise track error:', err);
+          }
+        }
+      });
+
+      // Buy Now handler - uses window.FitWise.track('purchase')
+      if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', async () => {
+          showToast(`🎉 Order placed for Size ${currentSize}! Thank you!`);
+
+          if (window.FitWise && typeof window.FitWise.track === 'function') {
+            try {
+              await window.FitWise.track('purchase', { sku: 'SKU-TSHIRT-CLASSIC' });
+              console.log('FitWise.track("purchase") successfully logged');
+            } catch (err) {
+              console.warn('FitWise track error:', err);
+            }
+          }
+        });
+      }
+    })();
+  </script>
+
+  <!-- Embed Self-Contained FitWise Script -->
+  <script src="./fitwise.js"></script>
+</body>
+</html>

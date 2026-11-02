@@ -1,0 +1,42 @@
+{
+  "category": "tshirt",
+  "model_type": "LightGBM",
+  "features": [
+    "height_cm",
+    "weight_kg",
+    "chest_cm",
+    "waist_cm",
+    "bmi",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "feature_list": [
+    "height_cm",
+    "weight_kg",
+    "chest_cm",
+    "waist_cm",
+    "bmi",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "class_order": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "classes": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "metrics": {
+    "accuracy": 0.8827,
+    "macro_f1": 0.8809
+  }
+}

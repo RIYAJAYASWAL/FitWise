@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: fitwise-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: node src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGO_URI
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: ML_SERVICE_URL
+        sync: false
+      - key: ML_TIMEOUT_MS
+        value: 60000
+      - key: ENABLE_CRON
+        value: "false"
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: fitwise-cache
+          property: connectionString
+      - fromGroup: fitwise-shared
+
+  - type: web
+    name: fitwise-ml
+    runtime: python
+    plan: free
+    rootDir: ml-service
+    buildCommand: pip install -r requirements.txt && python -m training.generate_data && python -m training.train
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - fromGroup: fitwise-shared
+
+  - type: keyvalue
+    name: fitwise-cache
+    plan: free
+    ipAllowList: []
+    maxmemoryPolicy: allkeys-lru
+
+envVarGroups:
+  - name: fitwise-shared
+    envVars:
+      - key: INTERNAL_KEY
+        generateValue: true

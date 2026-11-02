@@ -1,0 +1,42 @@
+{
+  "category": "jeans",
+  "model_type": "LightGBM",
+  "features": [
+    "height_cm",
+    "weight_kg",
+    "waist_cm",
+    "hip_cm",
+    "bmi",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "feature_list": [
+    "height_cm",
+    "weight_kg",
+    "waist_cm",
+    "hip_cm",
+    "bmi",
+    "kept_ratio",
+    "most_kept_size_idx"
+  ],
+  "class_order": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "classes": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS",
+    "XXL"
+  ],
+  "metrics": {
+    "accuracy": 0.8883,
+    "macro_f1": 0.8855
+  }
+}
