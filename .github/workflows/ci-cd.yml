@@ -52,5 +52,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Train models for tests
+        run: python -m training.train
+
       - name: Run ML test suite
         run: pytest

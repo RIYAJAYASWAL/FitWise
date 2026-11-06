@@ -318,7 +318,11 @@ describe("Analytics Service and Endpoints", () => {
       }
       await Purchase.insertMany(purchases);
 
-      const res = await summary(DEMO_STORE_ID);
+      const res = await summary(
+        DEMO_STORE_ID,
+        new Date("2026-10-01T00:00:00Z"),
+        new Date("2026-10-31T23:59:59Z"),
+      );
 
       expect(res.recommendations).toBe(4);
       // avgConfidence: (0.9 + 0.8 + 0.4 + 0.7) / 4 = 2.8 / 4 = 0.70
