@@ -1,13 +1,10 @@
 name: Chart Doctor Nightly Job
-
 on:
   schedule:
-    # Nightly cron run at 02:00 UTC
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
   workflow_dispatch:
-
 jobs:
-  run-chart-doctor:
+  run:
     name: Run Chart Doctor
     runs-on: ubuntu-latest
     steps:
@@ -16,8 +13,11 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
           INTERNAL_KEY: ${{ secrets.INTERNAL_KEY }}
         run: |
-          curl -X POST "$API_URL/internal/chart-doctor/run" \
+          API_URL="$(printf '%s' "$API_URL" | tr -d '[:space:]')"
+          API_URL="${API_URL%/}"
+          if [ -z "$API_URL" ] || [ -z "$INTERNAL_KEY" ]; then
+            echo "Missing API_URL or INTERNAL_KEY secret"; exit 1
+          fi
+          curl -fsS -X POST "$API_URL/internal/chart-doctor/run" \
             -H "x-internal-key: $INTERNAL_KEY" \
-            --retry 5 \
-            --retry-delay 30 \
-            --max-time 120
+            --retry 5 --retry-delay 30 --retry-all-errors --max-time 120
