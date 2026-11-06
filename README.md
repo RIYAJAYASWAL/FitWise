@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # FitWise — AI Size Intelligence & Returns Reduction Platform
 
 **FitWise** is an end-to-end e-commerce sizing intelligence and returns reduction system. It combines a lightweight, embeddable customer sizing widget, a high-performance machine learning microservice for tailored garment recommendations, an automated sizing diagnostics engine (**Chart Doctor**), and a comprehensive store owner analytics dashboard.
@@ -422,4 +421,3 @@ Distributed under the MIT License. See `LICENSE` for details.
 ## Author
 
 **Riya Jayaswal**: [GitHub](https://github.com/RIYAJAYASWAL) 
->>>>>>> 242f85fcf8fe5787c86cecc6c87bbfd8677d7325
