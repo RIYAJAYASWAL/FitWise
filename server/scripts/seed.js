@@ -703,13 +703,16 @@ export const seedDatabase = async (customUri, { closeConnection = false } = {}) 
 
 // Execute if run directly
 const isMainModule =
-  process.argv[1] &&
   path.resolve(process.argv[1]).toLowerCase() ===
-    fileURLToPath(import.meta.url).toLowerCase();
+  fileURLToPath(import.meta.url).toLowerCase();
 
 if (isMainModule) {
+  // Pass closeConnection: true so disconnectDB() is called in the finally block
   seedDatabase(process.env.MONGO_URI, { closeConnection: true })
-    .then(() => process.exit(0))
+    .then(() => {
+      console.log("✨ Seeding process finished successfully.");
+      process.exit(0);
+    })
     .catch((err) => {
       console.error("❌ Seeding failed:", err);
       process.exit(1);

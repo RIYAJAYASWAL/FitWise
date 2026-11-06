@@ -8,3 +8,6 @@ __pycache__/
 # ML models trained at build time
 models/*.joblib
 ml-service/models/*.joblib
+
+.vercel
+.env*
