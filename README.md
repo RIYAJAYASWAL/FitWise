@@ -126,7 +126,7 @@ npm install
 # 3. Configure environment variables in server/.env
 # Copy server/.env.example to server/.env if needed:
 PORT=5000
-MONGO_URI="mongodb+srv://alex:pass123@cluster0.znidj0t.mongodb.net/FitWise?appName=Cluster0"
+MONGO_URI="mongodb+srv://your_mongo_uri.mongodb.net/FitWise?appName=Cluster0"
 ML_SERVICE_URL="http://localhost:8000"
 ML_TIMEOUT_MS=5000
 ML_INTERNAL_KEY="dev-internal-key-secret-123"
